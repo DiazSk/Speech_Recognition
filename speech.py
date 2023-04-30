@@ -17,8 +17,14 @@ def recognize_file():
         conv = "en-US"
     elif lang == 2:
         conv = "hi-IN"
-    else:
+    elif lang == 3:
         conv = "mr-IN"
+    elif lang == 4:
+        conv = "ta-IN"
+    elif lang == 5:
+        conv = "gu-IN"
+    else:
+        conv = "ur-IN"
 
     f = select_file()
 
@@ -66,10 +72,16 @@ var = tk.IntVar()
 R1 = tk.Radiobutton(check_frame, text="English", variable=var, value=1)
 R2 = tk.Radiobutton(check_frame, text="Hindi", variable=var, value=2)
 R3 = tk.Radiobutton(check_frame, text="Marathi", variable=var, value=3)
+R4 = tk.Radiobutton(check_frame, text="Tamil", variable=var, value=4)
+R5 = tk.Radiobutton(check_frame, text="Gujarati", variable=var, value=5)
+R6 = tk.Radiobutton(check_frame, text="Urdu", variable=var, value=6)
 
 R1.grid(column=0, row=0)
 R2.grid(column=1, row=0)
 R3.grid(column=2, row=0)
+R4.grid(column=3, row=0)
+R5.grid(column=4, row=0)
+R6.grid(column=5, row=0)
 
 button_frame = tk.Frame()
 button_frame.grid(column=0, row=2)
