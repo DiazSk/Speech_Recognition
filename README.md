@@ -61,6 +61,7 @@ Contributions, suggestions, and bug reports are highly encouraged. Please feel f
 
 # License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
 Note: This application currently supports speech recognition for the languages mentioned above, and more languages will be added in future updates.
 
 Feel free to provide suggestions or contribute to the project on the GitHub page. Your feedback is valuable!
