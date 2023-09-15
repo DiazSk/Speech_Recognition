@@ -76,4 +76,7 @@ Glimpse of the project
 ![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/3134509a-b066-4627-add1-19ae87eac483)
 ![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/6e1dba73-dacd-4c63-84f6-da4ad4102a6b)
 ![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/8ff57cce-a0af-488e-ad66-6433a0e6f596)
+![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/067804d6-0a1b-4db3-a146-7f4cc2d051ca)
+![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/941ec377-548a-4878-8943-e52b604f8663)
+
 
