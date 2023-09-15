@@ -1,4 +1,4 @@
-# Speech Recognition for Regional Languages in India :microphone:
+# Speech Recognition for Regional Languages in India :robot_face:
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/your_username/your_project)
 ![GitHub contributors](https://img.shields.io/github/contributors/your_username/your_project)
