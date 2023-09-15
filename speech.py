@@ -74,6 +74,18 @@ def select_file_and_transcribe_audio():
                 transcript = r.recognize_google(audio_data, language=selected_language_code)
                 st.success("Transcription:")
                 st.write(transcript)
+
+                # Save Transcription as Text File with language-specific name
+                filename = f"transcription_{selected_language}.txt"
+                save_button = st.download_button(
+                    label=f"Save {selected_language} Transcription",
+                    data=transcript,
+                    key=filename,
+                    on_click=None,
+                    args=None,
+                    file_name=filename,
+                )
+
             except sr.UnknownValueError:
                 st.error("Could not recognize the audio")
             except sr.RequestError as e:
