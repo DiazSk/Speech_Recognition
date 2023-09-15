@@ -17,6 +17,7 @@ This project offers a versatile speech recognition tool tailored for regional la
   - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+- [Screenshots](#screenshots)
 
 ## Features
 
@@ -67,3 +68,10 @@ Note: This application currently supports speech recognition for the languages m
 Feel free to provide suggestions or contribute to the project on the GitHub page. Your feedback is valuable!
 
 `"https://github.com/DiazSk/Speech_Recognition"` 
+
+# Screenshot
+Glimpse of the project
+![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/afadc9fb-f742-4dd4-8463-24539f978223)
+![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/3134509a-b066-4627-add1-19ae87eac483)
+![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/6e1dba73-dacd-4c63-84f6-da4ad4102a6b)
+![image](https://github.com/DiazSk/Speech_Recognition/assets/92885761/9e6a2837-b053-48e8-9394-8aa8bdf97108)
