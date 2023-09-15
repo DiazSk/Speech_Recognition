@@ -1,95 +1,83 @@
-import tkinter as tk
-import ttkbootstrap as ttk
-from tkinter import ttk
-from tkinter import filedialog
+import streamlit as st
+import os
 import speech_recognition as sr
 from pygame import mixer
+import tempfile
 
+st.title("Speech Recognition :robot_face:")
+
+# Small paragraph summary
+st.write("This project allows you to perform speech recognition for regional languages in India. "
+         "You can transcribe audio files in Hindi, Marathi, Tamil, Gujarati, Urdu, and more languages.")
+
+# Note about supported languages
+st.write("\nNote: This application currently supports speech recognition for the following languages-> "
+         "Hindi, Marathi, Tamil, Gujarati, Urdu, and more languages will be added soon.")
+
+# Suggestion or Contribution on Github
+st.write("Feel free to contribute or provide suggestions on the [GitHub page](https://github.com/DiazSk/Speech_Recognition).")
 r = sr.Recognizer()
 
 mixer.init()
 
+def select_file_and_transcribe_audio():
+    uploaded_file = st.file_uploader("Choose a file", type=["wav", "mp3"])
+    temp_audio_path = None  # Initialize temp_audio_path to None
+    
+    if uploaded_file is not None:
+        st.success(f"File '{uploaded_file.name}' was successfully uploaded.")
+        
+        # Create a temporary directory
+        temp_dir = tempfile.mkdtemp()
 
-def recognize_file():
-    lang = var.get()
-    conv = str()
-    if lang == 1:
-        conv = "en-US"
-    elif lang == 2:
-        conv = "hi-IN"
-    elif lang == 3:
-        conv = "mr-IN"
-    elif lang == 4:
-        conv = "ta-IN"
-    elif lang == 5:
-        conv = "gu-IN"
-    else:
-        conv = "ur-IN"
+        # Save the uploaded audio to a temporary file
+        temp_audio_path = os.path.join(temp_dir, "temp_audio.wav")
+        with open(temp_audio_path, "wb") as temp_audio:
+            temp_audio.write(uploaded_file.read())
 
-    f = select_file()
+        # Title above the "Play Audio" button
+        st.subheader("To listen to the audio file :ear:")
 
-    mixer.music.load(f)
-    mixer.music.play()
+        play_button = st.button("Play Audio")
 
-    with sr.AudioFile(f) as source:
-        audio = r.record(source)
+        # Title above the "Transcribe Audio" section
+        st.subheader("Transcription of the audio file :bookmark_tabs:")
 
-        try:
-            text_widget.delete("0.0", "end")
-            text = r.recognize_google(audio, language=conv)
-            text_widget.insert("0.0", text)
+        if play_button:
+            # Play the audio using pygame mixer
+            mixer.music.load(temp_audio_path)
+            mixer.music.play()
 
-        except sr.UnknownValueError:
-            print("Could not recognize the audio")
+        # Display radio buttons for language selection
+        languages = ["Hindi", "Marathi", "Tamil", "Gujarati", "Urdu"]
+        selected_language = st.radio("Select the transcription language:", languages)
 
-        except sr.RequestError as e:
-            print(e)
+        transcribe_button_label = f"Transcribe in {selected_language}"
+        transcribe_button = st.button(transcribe_button_label)
 
+        if transcribe_button and temp_audio_path is not None:
+            # Map selected language to language code
+            language_mapping = {
+                "Hindi": "hi-IN",
+                "Marathi": "mr-IN",
+                "Tamil": "ta-IN",
+                "Gujarati": "gu-IN",
+                "Urdu": "ur-IN"
+            }
 
-def save_file():
-    f = select_file()
-    with open(f, "w") as file:
-        file.write(text_widget.get("0.0", "end"))
+            selected_language_code = language_mapping[selected_language]
 
+            # Transcribe the audio in the selected language
+            with sr.AudioFile(temp_audio_path) as source:
+                audio_data = r.record(source)
+            try:
+                transcript = r.recognize_google(audio_data, language=selected_language_code)
+                st.success("Transcription:")
+                st.write(transcript)
+            except sr.UnknownValueError:
+                st.error("Could not recognize the audio")
+            except sr.RequestError as e:
+                st.error(f"Speech recognition error: {e}")
 
-def select_file():
-    file_path = filedialog.askopenfilename(title="Select a File")
-    return file_path
-
-
-root = tk.Tk()
-root.title("Speech to Text")
-
-
-text_widget = tk.Text(font=("Arial", 15))
-text_widget.grid(column=0, row=0)
-
-check_frame = tk.Frame()
-check_frame.grid(column=0, row=1)
-
-var = tk.IntVar()
-
-R1 = tk.Radiobutton(check_frame, text="English", variable=var, value=1)
-R2 = tk.Radiobutton(check_frame, text="Hindi", variable=var, value=2)
-R3 = tk.Radiobutton(check_frame, text="Marathi", variable=var, value=3)
-R4 = tk.Radiobutton(check_frame, text="Tamil", variable=var, value=4)
-R5 = tk.Radiobutton(check_frame, text="Gujarati", variable=var, value=5)
-R6 = tk.Radiobutton(check_frame, text="Urdu", variable=var, value=6)
-
-R1.grid(column=0, row=0)
-R2.grid(column=1, row=0)
-R3.grid(column=2, row=0)
-R4.grid(column=3, row=0)
-R5.grid(column=4, row=0)
-R6.grid(column=5, row=0)
-
-button_frame = tk.Frame()
-button_frame.grid(column=0, row=2)
-
-recognize_btn = ttk.Button(button_frame, text="Recognize", command=recognize_file)
-save_btn = ttk.Button(button_frame, text="Save as", command=save_file)
-
-recognize_btn.grid(column=0, row=0)
-save_btn.grid(column=1, row=0)
-
-root.mainloop()
+# Call the function
+select_file_and_transcribe_audio()
