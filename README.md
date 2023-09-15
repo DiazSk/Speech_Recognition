@@ -34,7 +34,7 @@ This project offers a versatile speech recognition tool tailored for regional la
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your_username/your_project.git
+   git clone https://github.com/DiazSk/Speech_Recognition.git
 
 2. Navigate to the project directory:
    cd speech.py
