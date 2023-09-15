@@ -51,6 +51,7 @@ This project offers a versatile speech recognition tool tailored for regional la
 3. Play the uploaded audio to verify its content.
 4. Select your preferred regional language from the options.
 5. Click the "Transcribe" button to receive an accurate transcription of the audio file in your chosen language.
+6. Click the "Save Transcription" button to save the transcription as a text file with a language-specific name.
 
 # Contributing
 Contributions, suggestions, and bug reports are highly encouraged. Please feel free to provide feedback and contribute to the development of this project. Here's how you can get involved:
