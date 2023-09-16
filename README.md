@@ -44,7 +44,7 @@ This project offers a versatile speech recognition tool tailored for regional la
    pip install SpeechRecognition
    pip install pygame
 
-# Usage
+### Usage
 1. Run the Streamlit app:
    streamlit run app.py
 2. Upload an audio file of your choice.
